@@ -1,5 +1,6 @@
 import { Body, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { Controller } from '@nestjs/common';
+import { Public } from 'src/auth/decorators/public.decorator';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';
@@ -17,6 +18,7 @@ export class UsersController {
     }
   }
 
+  @Public()
   @Post()
   public async createUser(@Body() createUserDto: CreateUserDto) {
     try {
